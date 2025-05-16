@@ -1,0 +1,10 @@
+volumes:
+  db:
+
+services:
+  database:
+    image: mariadb@latest
+    environment:
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+    volumes:
+      - db:/var/lib/mysql

@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@theme {
+	--color-primary: rgb(0, 143, 194);
+	--color-btn: var(--color-primary);
+	--color-btn-hover: rgb(0, 155, 207);
+	--color-btn-border: rgb(0, 105, 155);
+	--color-btn-border-hover: rgb(0, 143, 194);
+}
