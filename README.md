@@ -1,38 +1,18 @@
-# sv
+# Bayerwald Hackathon Participants
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+## Development
 
-## Creating a project
+To run the application locally, you need to set up the database first by running setup mode once:
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+```sh
+./dev.sh setup
 ```
 
-## Developing
+If everything worked and database exists, you can stop the setup mode and start in production mode:
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```sh
+./dev.sh stop
+./dev.sh start
 ```
 
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+When done, use `./dev.sh stop`.

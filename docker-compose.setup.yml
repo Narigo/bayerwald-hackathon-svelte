@@ -1,0 +1,9 @@
+volumes:
+  db:
+
+services:
+  database:
+    volumes:
+      - "./scripts/setup/database:/docker-entrypoint-initdb.d"
+    ports:
+      - "3306:3306"
