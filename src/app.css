@@ -8,4 +8,17 @@
 	--color-btn-hover: rgb(0, 155, 207);
 	--color-btn-border: rgb(0, 105, 155);
 	--color-btn-border-hover: rgb(0, 143, 194);
+
+	--color-main-white: #ffffff;
+	--color-primary: #008fc2;
+	--color-primary-hover: #009bcf;
+	--color-primary-dark-hover: #008fbf;
+	--color-primary-darker-hover: #007aa3;
+	--color-secondary: #d9d9d9;
+	--color-primary-dark: #006793;
+	--color-primary-darker: #005980;
+	--color-light-grey: #ececec;
+	--color-text-color: #888888;
+
+	--font-inter: 'Inter', 'sans-serif';
 }

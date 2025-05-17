@@ -8,6 +8,8 @@
 	let { participants }: Props = $props();
 </script>
 
-{#each participants as participant}
-	<Participant {...participant} />
-{/each}
+<section class="grid grid-cols-[repeat(auto-fit,minmax(min-content,16rem))]">
+	{#each participants as participant}
+		<Participant {...participant} />
+	{/each}
+</section>
