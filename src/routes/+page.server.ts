@@ -5,8 +5,8 @@ import { stringToLinks, stringToTags } from '$lib/participants/util';
 
 export const load: PageServerLoad = async ({ params, url }) => {
 	const participants = await db.getParticipants();
-	const email = url.searchParams.get('email');
-	const token = url.searchParams.get('token');
+	const email = url.searchParams.get('email') ?? params.email;
+	const token = url.searchParams.get('token') ?? params.token;
 	const user = participants.find((p) => p.email === email && p.token === token);
 	const filteredParticipants = participants.filter((p) => p.show_on_page);
 	if (!user) {
@@ -45,7 +45,7 @@ export const actions = {
 					links: stringToLinks(linksAsString ?? '')
 				}
 			});
-			return { success: true };
+			return { success: true, email, token };
 		} catch (error) {
 			console.error('Exception occurred', error);
 			return fail(500, { message: 'Exception in server' });
