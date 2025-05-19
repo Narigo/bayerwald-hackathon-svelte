@@ -3,11 +3,11 @@ import * as db from '$lib/server/database';
 import type { Actions, PageServerLoad } from './$types';
 import { stringToLinks, stringToTags } from '$lib/participants/util';
 
-export const load: PageServerLoad = async ({ params, url }) => {
+export const load: PageServerLoad = async ({ url, locals }) => {
+	locals.email = locals.email ?? url.searchParams.get('email');
+	locals.token = locals.token ?? url.searchParams.get('token');
 	const participants = await db.getParticipants();
-	const email = url.searchParams.get('email') ?? params.email;
-	const token = url.searchParams.get('token') ?? params.token;
-	const user = participants.find((p) => p.email === email && p.token === token);
+	const user = participants.find((p) => p.email === locals.email && p.token === locals.token);
 	const filteredParticipants = participants.filter((p) => p.show_on_page);
 	if (!user) {
 		error(400, 'Unauthorized or credentials not found in database.');
@@ -19,10 +19,10 @@ export const load: PageServerLoad = async ({ params, url }) => {
 };
 
 export const actions = {
-	update: async (event) => {
-		const formData = await event.request.formData();
-		const email = formData.get('email')?.toString();
-		const token = formData.get('token')?.toString();
+	update: async ({ request, locals }) => {
+		const formData = await request.formData();
+		const email = (locals.email = locals.email ?? formData.get('email')?.toString());
+		const token = (locals.token = locals.token ?? formData.get('token')?.toString());
 		const name = formData.get('name')?.toString();
 		const team = formData.get('team')?.toString();
 		const show_on_page = formData.get('show_on_page')?.toString() === '1';
