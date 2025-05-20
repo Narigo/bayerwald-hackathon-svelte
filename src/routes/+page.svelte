@@ -12,7 +12,7 @@
 	console.log({ user, participants });
 </script>
 
-<div class="flex min-h-screen flex-col" style="background:url('{base}/bg.svg') no-repeat;">
+<div class="flex min-h-screen flex-col gap-8 p-8" style="background:url('{base}/bg.svg') no-repeat;">
 	<Header {user} />
 	<SearchFilter bind:searchValue={testing} />
 	<ParticipantsGrid {participants} />
