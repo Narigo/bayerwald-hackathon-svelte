@@ -4,8 +4,8 @@ declare global {
 	namespace App {
 		// interface Error {}
 		interface Locals {
-			email: string;
-			token: string;
+			email?: string;
+			token?: string;
 		}
 		// interface PageData {}
 		// interface PageState {}

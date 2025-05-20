@@ -4,8 +4,11 @@ import type { Actions, PageServerLoad } from './$types';
 import { stringToLinks, stringToTags } from '$lib/participants/util';
 
 export const load: PageServerLoad = async ({ url, locals }) => {
-	locals.email = locals.email ?? url.searchParams.get('email');
-	locals.token = locals.token ?? url.searchParams.get('token');
+	locals.email ??= url.searchParams.get('email') ?? undefined;
+	locals.token ??= url.searchParams.get('token') ?? undefined;
+	if (!(locals.email && locals.token)) {
+		error(400, 'Missing email or token.');
+	}
 	const participants = await db.getParticipants();
 	const user = participants.find((p) => p.email === locals.email && p.token === locals.token);
 	const filteredParticipants = participants.filter((p) => p.show_on_page);

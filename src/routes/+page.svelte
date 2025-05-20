@@ -16,7 +16,4 @@
 	<Header {user} />
 	<SearchFilter bind:searchValue={testing} />
 	<ParticipantsGrid {participants} />
-	{#if form}
-		<div>Formular-Erfolg? {form.success} - {form.message}</div>
-	{/if}
 </div>
